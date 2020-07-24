@@ -5,7 +5,7 @@
 #Output: "bab"
 #Note: "aba" is also a valid answer.
 
-def longestPalindrome(self, s):
+def longestPalindrome(s):
         def helper(s, i, j): #if s[i:j+1] is a palindrome, check if s[i-1:j+2] is a palindrome until finding a longest palindrome centered around i
             if (j - i)%2 == 0 and i> 0 and (j < len(s)-1) and s[i-1] == s[j+1]:
                 return helper(s, i-1, j+1)
