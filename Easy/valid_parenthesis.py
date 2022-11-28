@@ -6,7 +6,7 @@ Open brackets must be closed by the same type of brackets.
 Open brackets must be closed in the correct order.
 Note that an empty string is also considered valid."""
 
-def isValid(self, s: str) -> bool:
+def isValid(self, s):
     stack = []   #create a stack to push when reading '(', '[', '{' and pop when reading ')', ']', '}'
     for c in s:
     	if (len(stack) == 0) and (c == ')' or c == ']' or c == '}'):

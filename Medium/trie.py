@@ -1,60 +1,23 @@
-
-class Trie:
-
+class TrieNode:
+    def __init__(self, c, is_end=False):
+        self.char = c
+        self.is_end = is_end
+        self.children = {}
+class Trie(object):
+    """A trie has at least the root node, the root node doesn't store any character"""
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
-        self.trie ={}
-        
+        self.trie = {}
+    def insert(self, word):
+        """insert a word to the tree"""
+        # start at the root node, then traverse down to find each character of the word to see if it has been inserted
+        node = self.trie
 
-    def insert(self, word: str) -> None:
-        """
-        Inserts a word into the trie.
-        """
-        t = self.trie
         for c in word:
-            
-            if c not in t:
-                t[c] = {}
-            t = t[c]
-        t['#'] = '#'
-    def search(self, word: str) -> bool:
-        """
-        Returns if the word is in the trie.
-        """
-        t = self.trie
-        for c in word:
-            if c not in t:
-                return False
-            t = t[c]
-        if '#' in t:
-            return True
-        return False
-        
-
-    def startsWith(self, prefix: str) -> bool:
-        """
-        Returns if there is any word in the trie that starts with the given prefix.
-        """
-        t = self.trie
-        for c in prefix:
-            if c not in t:
-                return False
-            t = t[c]
-        return True
-
-        
-
+            if c not in node:
+                node[c] = Trie()
+            node = node[c]
+        node['#']
 
 trie = Trie()
-trie.insert("sup")
-trie.insert("suppose")
-trie.insert("what")
-trie.insert("dafuq")
-print(trie.search("sup"))
-print(trie.search("fff"))
-print(trie.startsWith("supp"))
-print(trie.startsWith("www"))
-print(trie.startsWith("why"))
-print(trie.startsWith("ss"))
+trie.insert("whatthehell")
+trie.insert("whatever")
